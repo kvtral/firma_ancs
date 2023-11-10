@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editor de Firma de Correo</title>
+    <style>
+        /* Estilos para el formulario y la vista previa de la firma */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #signatureForm {
+            margin-bottom: 20px;
+        }
+
+        #signatureForm label,
+        #signatureForm input {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        #signaturePreview {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="signatureForm">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="jobTitle">Cargo:</label>
+        <input type="text" id="jobTitle" name="jobTitle" required><br>
+
+        <label for="phone">Teléfonos:</label>
+        <input type="tel" id="phone" name="phone" value="CL: +56 2 2760 9071"><br>
+		<input type="tel" id="phone2" name="phone2" value="AR: +54 11 4899 2088">
+		<small style="margin: 0px; font-size: 1; color: rgb(160, 160, 160);">
+			*Si no requiere colocar telefono de Argentina, dejar vacio
+		</small><br>
+		<p></p>
+        <label for="email">Correo Electrónico:</label>
+        <input id="email" name="email" required><br>
+
+        <input type="submit" value="Actualizar Firma">
+    </form>
+
+    <div id="signaturePreview">
+        <table cellpadding="0" cellspacing="0"  style=" font-size: small; font-family: Arial;">
+            <tbody>
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="0"  style=" font-size: small; font-family: Arial;">
+                            <tbody>
+                                <tr>
+									<td width="110">
+									<div style="width: 50px;"></div>
+										<span color="#161c6b" width="11"  style="display: inline-block;">
+											<img src="img/ancs_logo_color.png" color="#161c6b" alt="ancs" width="100">
+										</span>
+								</td>
+                                    <td style="vertical-align: middle;">
+                                        <h2 id="signatureName" color="#2e2e2e"  style="margin: 0px; font-size: 16px; color: rgb(46, 46, 46); font-weight: 600;">Pepito Perez</h2>
+                                        <p id="signatureTitle" color="#2e2e2e" font-size="small" style="margin: 0px; color: rgb(70, 70, 70); font-size: 12px; line-height: 20px;">Desarrollador</p>
+<p color="#2e2e2e" font-size="small" style="margin: 0px; font-weight: 600; color: rgb(70, 70, 70); font-size: 14px; line-height: 20px;">
+										<span>Anachronics</span>
+									</p>
+								</td>
+								<td width="10">
+									<div style="width: 10px;"></div>
+								</td>
+								<td color="#161c6b" direction="vertical" width="1" height="auto" style="width: 1px; border-bottom: none; border-left: 1px solid rgb(22, 28, 107);">
+								</td>
+								<td width="10">
+									<div style="width: 10px;"></div>
+								</td>
+								<td style="vertical-align: middle;">
+									<table cellpadding="0" cellspacing="0"  style="font-size: small; font-family: Arial;">
+										<tbody>
+											<tr height="25" style="vertical-align: middle;">
+												<td width="30" style="vertical-align: middle;">
+													<table cellpadding="0" cellspacing="0"  style=" font-size: small; font-family: Arial;">
+														<tbody>
+															<tr>
+																<td style="vertical-align: bottom;">
+																	<span color="#161c6b" width="11"  style="display: inline-block; background-color: rgb(22, 28, 107);">
+																		<img src="img/phone-icon-2x.webp" color="#161c6b" alt="mobilePhone" width="13" style="display: block; background-color: rgb(22, 28, 107);">
+																	</span>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+												<td style="padding: 0px; color: rgb(46, 46, 46);">
+													<a href="tel:+56 2 2760 9071" color="#2e2e2e" style="text-decoration: none; color: rgb(70, 70, 70); font-size: 12px;">
+														<span  id="signaturePhoneCL">CL: +56 2 2760 9071 </span><br>
+														<span  id="signaturePhoneAR">AR: +56 2 2760 9071 </span>
+													</a>
+												</td>
+											</tr>
+											<tr height="25" style="vertical-align: middle;">
+												<td width="30" style="vertical-align: middle;">
+													<table cellpadding="0" cellspacing="0"  style=" font-size: small; font-family: Arial;">
+														<tbody>
+															<tr>
+																<td style="vertical-align: bottom;">
+																	<span color="#161c6b" width="11"  style="display: inline-block; background-color: rgb(22, 28, 107);">
+																		<img src="img/email-icon-2x.webp" color="#161c6b" alt="emailAddress" width="13" style="display: block; background-color: rgb(22, 28, 107);">
+																	</span>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+												<td style="padding: 0px;">
+													<a href="mailto:" color="#2e2e2e" style="text-decoration: none; color: rgb(70, 70, 70); font-size: 12px;">
+														<span id="signatureMail" >pepito.perez@anachronics.com</span>
+													</a>
+												</td>
+											</tr>
+											<tr height="25" style="vertical-align: middle;">
+												<td width="30" style="vertical-align: middle;">
+													<table cellpadding="0" cellspacing="0"  style=" font-size: small; font-family: Arial;">
+														<tbody>
+															<tr>
+																<td style="vertical-align: bottom;">
+																	<span color="#161c6b" width="11"  style="display: inline-block; background-color: rgb(22, 28, 107);">
+																		<img src="img/link-icon-2x.webp" color="#161c6b" alt="website" width="13" style="display: block; background-color: rgb(22, 28, 107);">
+																	</span>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+												<td style="padding: 0px;">
+													<a href="https://www.anachronics.com" color="#2e2e2e" style="text-decoration: none; color: rgb(70, 70, 70); font-size: 12px;">
+														<span>www.anachronics.com</span>
+													</a>
+												</td>
+											</tr>
+											<tr height="25" style="vertical-align: middle;">
+												<td width="30" style="vertical-align: middle;">
+													<table cellpadding="0" cellspacing="0"  style=" font-size: small; font-family: Arial;">
+														<tbody>
+															<tr>
+																<td style="vertical-align: bottom;">
+																	<span color="#161c6b" width="11"  style="display: inline-block; background-color: rgb(22, 28, 107);">
+																		<img src="img/address-icon-2x.webp" color="#161c6b" alt="address" width="13" style="display: block; background-color: rgb(22, 28, 107);">
+																	</span>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+												<td style="padding: 0px;">
+													<span color="#2e2e2e" style="font-size: 12px; color: rgb(70, 70, 70);">
+														<span>Cerro el Plomo 5630, Las Condes, RM Chile</span>
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+			<tr>
+				<td>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				</td>
+			</tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('signatureForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Recopilación de datos del formulario
+            var name = document.getElementById('name').value;
+            var jobTitle = document.getElementById('jobTitle').value;
+            var phone = document.getElementById('phone').value;
+            var phone2 = document.getElementById('phone2').value;
+            var email = document.getElementById('email').value;
+
+            // Actualización de la firma
+            document.getElementById('signatureName').textContent = name;
+            document.getElementById('signatureTitle').textContent = jobTitle;
+            document.getElementById('signaturePhoneCL').textContent = phone;
+            document.getElementById('signaturePhoneAR').textContent = phone2;
+            document.getElementById('signatureMail').textContent = email;
+        });
+    </script>
+</body>
+</html>
