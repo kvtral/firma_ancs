@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-	<title>Editor de Firma de Correo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Generador de Firma de Correo ANCS</title>
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -26,7 +29,7 @@
 			color: rgb(70, 70, 70);
 			font-size: 12px;
 
-        }
+		}
 
 		#signatureCompany {
 			margin: 0px;
@@ -48,181 +51,178 @@
 		}
 
 		#signaturePreview {
-			border: 1px solid #dddd;
+			border: 1px solid #ddd;
 			padding: 10px;
 		}
-    </style>
+
+		.verticalMiddle {
+			vertical-align: middle;
+		}
+
+		.icono {
+			display: inline-block;
+			background-color: #15152d;
+		}
+
+		.barra {
+			width: 1px;
+			border-bottom: none;
+			border-right: 1px solid #15152d;
+		}
+
+		.icono img {
+			display: block;
+		}
+
+	</style>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body>
-	<form id="signatureForm">
-		<label for="name">Nombre:</label>
-		<input type="text" id="name" name="name" required oninput="updateSignature()" value="Pepito Perez A."><br>
-		<label for="jobTitle">Cargo:</label>
-		<input type="text" id="jobTitle" name="jobTitle" required  oninput="updateSignature()" value="Backend Developer"><br>
-		<label for="phone">Teléfono 1:</label>
-		<input id="phone" name="phone" value="CL: +56 2 2760 9071"
-		 oninput="updateSignature()"> </br>
-		<label for="phone2">Teléfono 2:</label>
-		<input id="phone2" name="phone2" value=""
-		oninput="updateSignature()"></br>
-
-		<label for="email">Correo Electrónico:</label>
-		<input id="email" name="email" required value="pepito.perez@anachronics.com"><br>
-
-		<fieldset>
-			<legend>Dirección:</legend>
-			<div>
-				<input type="radio" id="stgo" name="office" value="stgo" checked onchange="updateSignature()" />
-				<label for="stgo">Cerro El Plomo 5630 oficina 404 - Las Condes, Chile</label>
+	<div class="container pt-5 row-cols-auto ">
+		<form class="mb-3" id="signatureForm">
+			<div class="row row-cols-auto">
+				<div class="col-2 align-content-start">
+					<label for="name">Nombre:</label>
+				</div>
+				<div class="col">
+					<input type="text" id="name" name="name" required oninput="updateSignature()"
+						value="Pepito Perez A."><br>
+				</div>
 			</div>
-
-			<div>
-				<input type="radio" id="caba" name="office" value="caba" onchange="updateSignature()" />
-				<label for="caba">Luis María Campos 1061, Piso 9 y 10 - CABA, Argentina</label>
+			<div class="row row-cols-auto">
+				<div class="col-2 align-content-start">
+					<label for="jobTitle">Cargo:</label>
+				</div>
+				<div class="col align-content-start">
+					<input type="text" id="jobTitle" name="jobTitle" required oninput="updateSignature()"
+						value="Backend Developer"><br>
+				</div>
 			</div>
-
-			<div>
-				<input type="radio" id="mplata" name="office" value="mplata" onchange="updateSignature()" />
-				<label for="mplata">Bernardo de Irigoyen 3918, Piso 1 - Mar del Plata, Argentina</label>
+			<div class="row row-cols-auto">
+				<div class="col-2 align-content-start">
+					<label for="phone">Teléfono 1:</label>
+				</div>
+				<div class="col align-content-start">
+					<input id="phone" name="phone" value="CL: +56 2 2760 9071" oninput="updateSignature()"> </br>
+				</div>
 			</div>
-		</fieldset>
+			<div class="row row-cols-auto">
+				<div class="col-2 align-content-start">
+					<label for="phone2">Teléfono 2:</label>
+				</div>
 
-<!--        <input type="submit" value="Actualizar Firma">-->
-	</form>
+				<div class="col">
+					<input id="phone2" name="phone2" value="" oninput="updateSignature()"></br>
+				</div>
+			</div>
+			<div class="row row-cols-auto">
+				<div class="col-2 align-content-start">
+					<label for="email">Email:</label>
+				</div>
+				<div class="col">
+					<input id="email" name="email" required value="pepito.perez@anachronics.com"><br>
+				</div>
+			</div>
+			<fieldset>
+				<legend class="h5">Dirección:</legend>
+				<div>
+					<input type="radio" id="stgo" name="office" value="stgo" checked onchange="updateSignature()" />
+					<label for="stgo">Cerro El Plomo 5630 oficina 404 - Las Condes, Chile</label>
+				</div>
+
+				<div>
+					<input type="radio" id="caba" name="office" value="caba" onchange="updateSignature()" />
+					<label for="caba">Luis María Campos 1061, Piso 9 y 10 - CABA, Argentina</label>
+				</div>
+
+				<div>
+					<input type="radio" id="mplata" name="office" value="mplata" onchange="updateSignature()" />
+					<label for="mplata">Bernardo de Irigoyen 3918, Piso 1 - Mar del Plata, Argentina</label>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 
 	<hr>
 
-	<div id="signaturePreview">
-		<table cellpadding="0" cellspacing="0"  style=" font-size: small; ">
+	<div class="container " id="signaturePreview">
+		<table cellpadding="0" cellspacing="0">
 			<tbody>
 				<tr>
+					<td width="110">
+						<div style="width: 50px;"></div>
+						<span width="11" style="display: inline-block;">
+							<img src="img/ancs_logo_color.png" alt="ancs" width="100">
+						</span>
+					</td>
+					<td class="verticalMiddle">
+						<h2 id="signatureName">Pepito Perez A.</h2>
+						<p id="signatureTitle">Backend Developer</p>
+						<p id="signatureCompany">Anachronics</p>
+					</td>
+					<td width="10" direction="vertical" height="auto" class="barra">
+						<div style="width: 10px;"></div>
+					</td>
+					<td width="20">
+						<span style="width: 20px;"> </span>
+					</td>
 					<td>
 						<table cellpadding="0" cellspacing="0">
-							<tbody>
-								<tr>
-									<td width="110">
-										<div style="width: 50px;"></div>
-											<span width="11"  style="display: inline-block;">
-												<img src="img/ancs_logo_color.png" alt="ancs" width="100">
-											</span>
-									</td>
-									<td style="vertical-align: middle;">
-										<h2 id="signatureName">Pepito Perez A.</h2>
-										<p id="signatureTitle">Backend Developer</p>
-										<p id="signatureCompany">Anachronics</p>
+							<tr height="25" class="verticalMiddle" id="divPhone">
+								<td >
+									<span width="11" class="icono">		
+										<img src="img/phone-icon-2x.webp" alt="Teléfono" width="13">
+									</span>
 								</td>
-								<td width="10">
-									<div style="width: 10px;"></div>
+								<td class="ps-2">
+									<span class="informacion" id="signaturePhone">CL: +56 2 2760 9071 </span><br>
+									<span class="informacion" id="signaturePhone2"></span>
 								</td>
-								<td color="#15152d" direction="vertical" width="1" height="auto" style="width: 1px; border-bottom: none; border-left: 1px solid #15152d;">
+							</tr>
+						  	<tr height="25" class="verticalMiddle">
+								<td>
+									<span width="11" class="icono">
+										<img src="img/email-icon-2x.webp" alt="Email" width="13">
+										</span>
 								</td>
-								<td width="10">
-									<div style="width: 10px;"></div>
+								<td class="ps-2">
+									<span class="informacion" id="signatureMail">
+										pepito.perez@anachronics.com
+									</span>
 								</td>
-								<td style="vertical-align: middle;">
-									<table cellpadding="0" cellspacing="0"  style="font-size: small;">
-										<tbody>
-											<tr height="25" style="vertical-align: middle;">
-												<td width="30" style="vertical-align: middle;">
-													<table cellpadding="0" cellspacing="0"  style=" font-size: small;">
-														<tbody>
-															<tr>
-																<td style="vertical-align: center;">
-																	<span color="#15152d" width="11"  style="display: inline-block; background-color: #15152d;">
-																		<img src="img/phone-icon-2x.webp" color="#15152d" alt="mobilePhone" width="13" style="display: block; ">
-																	</span>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</td>
-												<td style="padding: 0px;">
-														<span class="informacion"  id="signaturePhone">CL: +56 2 2760 9071 </span><br>
-														<span class="informacion" id="signaturePhone2"></span>
-													</a>
-												</td>
-											</tr>
-											<tr height="25" style="vertical-align: middle;">
-												<td width="30" style="vertical-align: middle;">
-													<table cellpadding="0" cellspacing="0"  style=" font-size: small; ">
-														<tbody>
-															<tr>
-																<td style="vertical-align: bottom;">
-																	<span color="#15152d" width="11"  style="display: inline-block; background-color: #15152d;">
-																		<img src="img/email-icon-2x.webp" color="#15152d" alt="emailAddress" width="13" style="display: block;">
-																	</span>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</td>
-												<td style="padding: 0px;">
-													<a href="mailto:" color="#2e2e2e" class="informacion"">
-														<span id="signatureMail" >pepito.perez@anachronics.com</span>
-													</a>
-												</td>
-											</tr>
-											<tr height="25" style="vertical-align: middle;">
-												<td width="30" style="vertical-align: middle;">
-													<table cellpadding="0" cellspacing="0"  style=" font-size: small; ">
-														<tbody>
-															<tr>
-																<td style="vertical-align: bottom;">
-																	<span color="#15152d" width="11"  style="display: inline-block; background-color: #15152d;">
-																		<img src="img/link-icon-2x.webp" color="#15152d" alt="website" width="13" style="display: block;">
-																	</span>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</td>
-												<td style="padding: 0px;">
-													<a href="https://www.anachronics.com" class="informacion">
-														<span>www.anachronics.com</span>
-													</a>
-												</td>
-											</tr>
-											<tr height="25" style="vertical-align: middle;">
-												<td width="30" style="vertical-align: middle;">
-													<table cellpadding="0" cellspacing="0"  style=" font-size: small; ">
-														<tbody>
-															<tr>
-																<td style="vertical-align: bottom;">
-																	<span color="#15152d" width="11"  style="display: inline-block; background-color: #15152d;">
-																		<img src="img/address-icon-2x.webp" color="#15152d" alt="address" width="13" style="display: block;">
-																	</span>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</td>
-												<td style="padding: 0px;">
-													<span class="informacion" id="signatureOffice">
-														Cerro El Plomo 5630 oficina 404 - Las Condes, Chile
-													</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+						  	</tr>
+						  	<tr height="25" class="verticalMiddle">
+								<td>
+									<span width="11" class="icono">
+										<img src="img/link-icon-2x.webp" alt="Website" width="13">
+									</span>
 								</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-			<tr>
-				<td>
-				</td>
-			</tr>
-			<tr>
-				<td>
-				</td>
-			</tr>
-            </tbody>
-        </table>
-    </div>
+								<td class="ps-2">
+									<a href="https://www.anachronics.com" class="informacion">www.anachronics.com</a>
+								</td>
+						  	</tr>
+						  	<tr  height="25" class="verticalMiddle">
+								<td>
+									<span width="11" class="icono">
+										<img src="img/address-icon-2x.webp" alt="Dirección" width="13">
+									</span>
+								</td>
+								<td class="ps-2">
+									<span class="informacion" id="signatureOffice">
+										Cerro El Plomo 5630 oficina 404 - Las Condes, Chile
+									</span>
+								</td>
+					  		</tr>
+						</table>
+				  	</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-    <script>
+	<script>
 		function updateSignature() {
 			let name = document.getElementById('name').value;
 			let jobTitle = document.getElementById('jobTitle').value;
@@ -238,7 +238,17 @@
 			document.getElementById('signatureOffice').textContent = officeLabel;
 			document.getElementById('signaturePhone').textContent = phoneValue;
 			document.getElementById('signaturePhone2').textContent = phone2Value;
+
+			// Verifica si ambos campos de teléfono están vacíos
+			if (phoneValue.trim() === '' && phone2Value.trim() === '') {
+				// Si están vacíos, oculta el bloque de teléfono
+				document.getElementById('divPhone').style.display = 'none';
+			} else {
+				// Si al menos uno de los campos tiene contenido, muestra el bloque de teléfono
+				document.getElementById('divPhone').style.display = 'table-row';
+			}
 		}
-    </script>
+	</script>
 </body>
+
 </html>
