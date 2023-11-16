@@ -66,13 +66,13 @@
 
 		.icono {
 			display: inline-block;
-			background-color: #15152d;
+			background-color: #1e2037;
 		}
 
 		.barra {
 			width: 1px;
 			border-bottom: none;
-			border-right: 1px solid #15152d;
+			border-right: 1px solid #1e2037;
 		}
 
 		.icono img {
@@ -80,13 +80,19 @@
 		}
 
 		.bg-ancs {
-			background-color: #15152d;
+			background-color: #1e2037;
 		}
 
 	</style>
 </head>
 
 <body class="bg-ancs">
+	<nav class="navbar navbar-expand-lg bg-ancs navbar-dark">
+		<div class="container">
+			<img src="img/logo_horizontal-blanco-fondo-azul.jpg" alt="logo_ancs" height="50">
+		 	 <h4 class="navbar-brand">| Editor de firma de correo | </h4>
+		</div>
+	  </nav>
 	<div class="container bg-light mt-5 pt-5 ps-4 pe-4 row-cols-auto rounded-4 pb-5">
 		<div class="container">
 		<form class="mb-3" id="signatureForm">
@@ -156,16 +162,16 @@
 	<hr>
 
 	<div class="container bg-white" id="signaturePreview">
-		<table cellpadding="0" cellspacing="0">
+		<table  cellpadding="0" cellspacing="0">
 			<tbody>
-				<tr>
+				<tr class="mt-5 mb-2">
 					<td width="110">
 						<div style="width: 50px;"></div>
 						<span width="11" style="display: inline-block;">
 							<img src="img/ancs_logo_color.png" alt="ancs" width="100">
 						</span>
 					</td>
-					<td class="verticalMiddle" width=13%>
+					<td class="verticalMiddle">
 						<h2 id="signatureName">Pepito Perez A.</h2>
 						<p id="signatureTitle">Backend Developer</p>
 						<p id="signatureCompany">Anachronics</p>
@@ -176,10 +182,10 @@
 					<td width="20">
 						<span style="width: 20px;"> </span>
 					</td>
-					<td class="ps-3" width=100%>
-						<table cellpadding="0" cellspacing="0" width=100%>
+					<td>
+						<table cellpadding="0" cellspacing="0" width="100%">
 							<tr height="25" class="verticalMiddle" id="divPhone">
-								<td width="14">
+								<td >
 									<span width="11" class="icono">		
 										<img src="img/phone-icon-2x.webp" alt="Teléfono" width="13">
 									</span>
@@ -190,7 +196,7 @@
 								</td>
 							</tr>
 						  	<tr height="25" class="verticalMiddle">
-								<td width="14">
+								<td>
 									<span width="11" class="icono">
 										<img src="img/email-icon-2x.webp" alt="Email" width="13">
 										</span>
@@ -202,7 +208,7 @@
 								</td>
 						  	</tr>
 						  	<tr height="25" class="verticalMiddle">
-								<td width="14">
+								<td>
 									<span width="11" class="icono">
 										<img src="img/link-icon-2x.webp" alt="Website" width="13">
 									</span>
@@ -212,7 +218,7 @@
 								</td>
 						  	</tr>
 						  	<tr  height="25" class="verticalMiddle">
-								<td width="14">
+								<td>
 									<span width="11" class="icono">
 										<img src="img/address-icon-2x.webp" alt="Dirección" width="13">
 									</span>
