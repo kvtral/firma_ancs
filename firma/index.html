@@ -5,10 +5,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Generador de Firma de Correo ANCS</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<style>
 		body {
 			font-family: Arial, sans-serif;
-			margin: 20px;
 		}
 
 		.informacion {
@@ -74,13 +75,16 @@
 			display: block;
 		}
 
+		.bg-ancs {
+			background-color: #15152d;
+		}
+
 	</style>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
-	<div class="container pt-5 row-cols-auto ">
+<body class="bg-ancs">
+	<div class="container bg-light mt-5 pt-5 ps-4 pe-4 row-cols-auto rounded-4 pb-5">
+		<div class="container">
 		<form class="mb-3" id="signatureForm">
 			<div class="row row-cols-auto">
 				<div class="col-2 align-content-start">
@@ -122,7 +126,7 @@
 					<label for="email">Email:</label>
 				</div>
 				<div class="col">
-					<input id="email" name="email" required value="pepito.perez@anachronics.com"><br>
+					<input id="email" name="email" required value="pepito.perez" oninput="updateSignature()"><span class="informacion"><i>@anachronics.com</i></span><br>
 				</div>
 			</div>
 			<fieldset>
@@ -221,12 +225,12 @@
 			</tbody>
 		</table>
 	</div>
-
+</div>
 	<script>
 		function updateSignature() {
 			let name = document.getElementById('name').value;
 			let jobTitle = document.getElementById('jobTitle').value;
-			let email = document.getElementById('email').value;
+			let email = document.getElementById('email').value +  "@anachronics.com";
 			let phoneValue = document.getElementById('phone').value;
 			let phone2Value = document.getElementById('phone2').value;
 			let selectedOption = document.querySelector('input[name="office"]:checked');
