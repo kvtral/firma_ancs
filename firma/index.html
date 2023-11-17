@@ -14,6 +14,7 @@
 		body {
 			/* font-family: Arial, sans-serif; */
 			font-family: 'Questrial', sans-serif;
+			padding-top: 50px;
 		}
 
 		.informacion {
@@ -83,17 +84,29 @@
 			background-color: #1e2037;
 		}
 
+		.alert-copied {
+			position: fixed;
+			bottom: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			padding: 10px;
+			background-color: green;
+			color: white;
+			border-radius: 5px;
+			z-index: 1000;
+			transition: opacity 0.5s ease;
+  		}
 	</style>
 </head>
 
 <body class="bg-ancs">
-	<nav class="navbar navbar-expand-lg bg-ancs navbar-dark">
+	<nav class="navbar navbar-expand-lg bg-ancs navbar-dark fixed-top shadow-lg ">
 		<div class="container">
 			<img src="img/logo_horizontal-blanco-fondo-azul.jpg" alt="logo_ancs" height="50">
 		 	 <h4 class="navbar-brand">| Editor de firma de correo | </h4>
 		</div>
-	  </nav>
-	<div class="container bg-light mt-5 pt-5 ps-4 pe-4 row-cols-auto rounded-4 pb-5">
+	</nav>
+	<div class="container bg-light mb-5 mt-5 p-5 row-cols-auto rounded-4">
 		<div class="container">
 		<form class="mb-3" id="signatureForm">
 			<div class="row row-cols-auto">
@@ -160,8 +173,13 @@
 	</div>
 
 	<hr>
+	<button id="copyButton" class="btn btn-sm btn-outline-success mb-3">Copiar Firma en el portapapeles</button>
+	<div id="copyAlert" class="alert-copied" style="display: none;">
+		✔ Copiado
+	</div>
+	  
 
-	<div class="container bg-white" id="signaturePreview">
+	<div class="container bg-white" id="signaturePreview" contenteditable>
 		<table  cellpadding="0" cellspacing="0">
 			<tbody>
 				<tr class="mt-5 mb-2">
@@ -235,6 +253,17 @@
 			</tbody>
 		</table>
 	</div>
+	<hr>
+	<button id="copyButton" class="btn btn-sm btn-outline-primary mb-3 mt-4 mb-4" data-bs-toggle="collapse" data-bs-target="#signatureCodeBlock" role="button" aria-expanded="false" aria-controls="signatureCodeBlock">
+		Mostrar Código HTML de la Firma:
+	</button>
+	<div class="container mt-3  text-light bg-dark collapse" id="signatureCodeBlock">
+		<pre>
+			<code class="language-html" id="signatureCode">
+			<!-- El código HTML de la firma se insertará aquí mediante JavaScript -->
+	  		</code>
+		</pre>
+  	</div>
 </div>
 	<script>
 		function updateSignature() {
@@ -261,8 +290,50 @@
 				// Si al menos uno de los campos tiene contenido, muestra el bloque de teléfono
 				document.getElementById('divPhone').style.display = 'table-row';
 			}
+			loadSignatureCode();
 		}
+
+		function loadSignatureCode() {
+			const signatureHtml = document.getElementById('signaturePreview').innerHTML;
+			document.getElementById('signatureCode').textContent = signatureHtml;
+		}
+
+		document.getElementById('copyButton').addEventListener('click', function() {
+    		let signatureDiv = document.getElementById('signaturePreview');
+    		let range = document.createRange();
+    		let selection = window.getSelection();
+    
+    		// Limpiar selecciones previas
+    		selection.removeAllRanges();
+
+    		// Seleccionar el contenido del elemento
+    		range.selectNodeContents(signatureDiv);
+    		selection.addRange(range);
+    		try {
+      			// Ejecutar el comando de copia
+      			let successful = document.execCommand('copy');
+      			let msg = successful ? 'exitoso' : 'fallido';
+      			console.log('Copia fue ' + msg);
+				let alertBox = document.getElementById('copyAlert');
+  				alertBox.style.display = 'block';
+  				alertBox.style.opacity = '1';
+
+			  // Ocultar la alerta después de 2 segundos
+  				setTimeout(function() {
+					alertBox.style.opacity = '0';
+					setTimeout(function() { // Esperar a que la transición termine para ocultar
+					alertBox.style.display = 'none';
+					}, 500); // Coincide con la duración de la transición
+				}, 2000);
+ 		   } catch (err) {
+      			console.log('Error al copiar', err);
+    	}
+    		// Limpiar la selección después de copiar
+    		selection.removeAllRanges();
+  		});
+		window.onload = loadSignatureCode;
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>
