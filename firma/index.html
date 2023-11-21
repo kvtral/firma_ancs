@@ -76,6 +76,11 @@
 			border-right: 1px solid #1e2037;
 		}
 
+		.underline {
+			width: 0.5px;
+			border-bottom: 1px solid #a4a4a4e7;
+		}
+
 		.icono img {
 			display: block;
 		}
@@ -152,7 +157,7 @@
 					<input id="email" name="email" required value="pepito.perez" oninput="updateSignature()"><span class="informacion"><i>@anachronics.com</i></span><br>
 				</div>
 			</div>
-			<fieldset>
+			<!-- <fieldset>
 				<legend class="h5">Dirección:</legend>
 				<div>
 					<input type="radio" id="stgo" name="office" value="stgo" checked onchange="updateSignature()" />
@@ -168,7 +173,7 @@
 					<input type="radio" id="mplata" name="office" value="mplata" onchange="updateSignature()" />
 					<label for="mplata">Bernardo de Irigoyen 3918, Piso 1 - Mar del Plata, Argentina</label>
 				</div>
-			</fieldset>
+			</fieldset> -->
 		</form>
 	</div>
 
@@ -184,16 +189,16 @@
 			<tbody>
 				<tr class="mt-5 mb-2">
 					<td width="110">
-						<div style="width: 50px;"></div>
+						<div></div>
 						<span width="11" style="display: inline-block;">
-							<img src="img/ancs_logo_color.png" alt="ancs" width="100">
+							<img src="img/logo_trns_vrt.png" alt="ancs" width="150">
 						</span>
 					</td>
-					<td class="verticalMiddle">
+<!-- 					<td class="verticalMiddle">
 						<h2 id="signatureName">Pepito Perez A.</h2>
 						<p id="signatureTitle">Backend Developer</p>
 						<p id="signatureCompany">Anachronics</p>
-					</td>
+					</td> -->
 					<td width="10" direction="vertical" height="auto" class="barra">
 						<div style="width: 10px;"></div>
 					</td>
@@ -202,7 +207,11 @@
 					</td>
 					<td>
 						<table cellpadding="0" cellspacing="0" width="100%">
-							<tr height="25" class="verticalMiddle" id="divPhone">
+							<tr class="underline mb-2">
+								<h2 id="signatureName">Pepito Perez A.</h2>
+								<p id="signatureTitle">Backend Developer</p>
+							</tr>
+							<tr height="25" class="mt-2 verticalMiddle" id="divPhone">
 								<td >
 									<span width="11" class="icono">		
 										<img src="img/phone-icon-2x.webp" alt="Teléfono" width="13">
@@ -235,7 +244,7 @@
 									<a href="https://www.anachronics.com" class="informacion">www.anachronics.com</a>
 								</td>
 						  	</tr>
-						  	<tr  height="25" class="verticalMiddle">
+						  	<!-- <tr  height="25" class="verticalMiddle">
 								<td>
 									<span width="11" class="icono">
 										<img src="img/address-icon-2x.webp" alt="Dirección" width="13">
@@ -246,7 +255,7 @@
 										Cerro El Plomo 5630 oficina 404 - Las Condes, Chile
 									</span>
 								</td>
-					  		</tr>
+					  		</tr> -->
 						</table>
 				  	</td>
 				</tr>
@@ -272,13 +281,13 @@
 			let email = document.getElementById('email').value +  "@anachronics.com";
 			let phoneValue = document.getElementById('phone').value;
 			let phone2Value = document.getElementById('phone2').value;
-			let selectedOption = document.querySelector('input[name="office"]:checked');
-			let officeLabel = selectedOption.nextElementSibling.textContent;
+		//	let selectedOption = document.querySelector('input[name="office"]:checked');
+		//	let officeLabel = selectedOption.nextElementSibling.textContent;
 
 			document.getElementById('signatureName').textContent = name;
 			document.getElementById('signatureTitle').textContent = jobTitle;
 			document.getElementById('signatureMail').textContent = email;
-			document.getElementById('signatureOffice').textContent = officeLabel;
+		//	document.getElementById('signatureOffice').textContent = officeLabel;
 			document.getElementById('signaturePhone').textContent = phoneValue;
 			document.getElementById('signaturePhone2').textContent = phone2Value;
 
